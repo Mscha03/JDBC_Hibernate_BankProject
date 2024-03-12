@@ -1,17 +1,22 @@
 package org.example;
 
 
+import org.example.exception.InsufficientFundsException;
+import org.example.exception.InvalidTransactionException;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class App {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InsufficientFundsException, InvalidTransactionException {
 
-//        Account account = new Account(12, "Ashkan", 10000);
-        Account account2 = Account.readAccountFromDatabase(2);
-        account2.getAccountHolderName();
+        Account.showOneAccount(9);
+        Account account = Account.getOneAccount(9);
+        account.deposit(500);
+        Account.showOneAccount(9);
 
-
+        Account.showOneAccount(3);
+        Account account1 = Account.getOneAccount(3);
+        account1.withdraw(700);
+        Account.showOneAccount(3);
     }
 }
